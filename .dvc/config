@@ -1,7 +1,0 @@
-[core]
-    remote = storage
-['remote "storage"']
-    url = gdrive://1af2TcWPiYGnF23lEp8p9TSqBC1I4JvpO
-    gdrive_use_service_account = false
-    gdrive_service_account_user_email = aksrao1998@gmail.com
-    gdrive_acknowledge_abuse = true
