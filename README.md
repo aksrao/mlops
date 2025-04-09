@@ -1,4 +1,1 @@
-# mlops
-
-# to install packages
-- conda env update --file package.yml
+# This Repo has the tools and project related to mlops.
