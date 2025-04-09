@@ -2,3 +2,6 @@ code.zip
 /model.pkl
 /eval
 .conda
+/Project-1/virEnv/
+/Project-1/*.egg-info
+/Project-1/logs
