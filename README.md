@@ -5,3 +5,4 @@ there are various projects form biggeners to advance.
     - mlflow
     - kubeflow
     - DVC
+- Use Terraform to create S3 bucket so only a role mlops can access the bucket.
