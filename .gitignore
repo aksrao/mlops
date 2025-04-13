@@ -8,3 +8,4 @@ code.zip
 /Terraform/*.tfvars
 /Terraform/.terraform/
 /Terraform/*.terraform.*
+**/*.tfstate*
