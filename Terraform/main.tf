@@ -1,13 +1,9 @@
-resource "random_string" "unique_name" {
-  length  = "4"
-  special = false
-}
 
 resource "aws_s3_bucket" "mlops_bucket" {
-  bucket = "mlops${random_string.unique_name.id}"
+  bucket = "mlops-projects-udemy"
 }
 
-resource "aws_iam_role" "mlops" {
+resource "aws_iam_role" "mlops_role" {
   name = "mlops"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -15,7 +11,7 @@ resource "aws_iam_role" "mlops" {
       {
         Effect = "Allow"
         Principal = {
-          Service = "s3.amazonaws.com" 
+          Service = "s3.amazonaws.com"
         }
         Action = "sts:AssumeRole"
       }
@@ -23,20 +19,20 @@ resource "aws_iam_role" "mlops" {
   })
 }
 resource "aws_iam_role_policy" "name" {
-  name = "mlopss3access"
-  role = aws_iam_role.mlops.id
+  name = "mlopsS3access"
+  role = aws_iam_role.mlops_role.id
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
-        Effect   = "Allow"
-        Action   = [
-            "s3:*",
-            "s3-object-lambda:*"
+        Effect = "Allow"
+        Action = [
+          "s3:*",
+          "s3-object-lambda:*"
         ]
         Resource = [
-          aws_s3_bucket.mlops_bucket.arn,
-          "${aws_s3_bucket.mlops_bucket.arn}/*"
+          "arn:aws:s3:::${aws_s3_bucket.mlops_bucket.bucket}",
+          "arn:aws:s3:::${aws_s3_bucket.mlops_bucket.bucket}/*"
         ]
       }
     ]
@@ -44,33 +40,34 @@ resource "aws_iam_role_policy" "name" {
 }
 
 resource "aws_s3_account_public_access_block" "block_plublic" {
-    depends_on = [ aws_s3_bucket.mlops_bucket ]
-    block_public_acls       = true
-    block_public_policy     = true
-    ignore_public_acls      = true
-    restrict_public_buckets = true
+  depends_on              = [aws_s3_bucket.mlops_bucket]
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
-resource "aws_s3control_bucket_policy" "role_access" {
-    bucket = aws_s3_bucket.mlops_bucket.id
-    policy = jsonencode({
-        Version = "2012-10-17"
+resource "aws_s3_bucket_policy" "role_access" {
+    depends_on = [ aws_s3_bucket.mlops_bucket, aws_iam_role_policy.name ]
+  bucket = aws_s3_bucket.mlops_bucket.id
+  policy = jsonencode({
+    Version = "2012-10-17"
     Statement = [
       {
-        Sid       = "AllowRoleAccessOnly"
-        Effect    = "Allow"
+        Sid    = "AllowRoleAccessOnly"
+        Effect = "Allow"
         Principal = {
-          AWS = data.aws_iam_role.mlops_role.arn
+          AWS = aws_iam_role.mlops_role.arn
         }
-        Action    = [
+        Action = [
           "s3:GetObject",
           "s3:PutObject",
           "s3:ListBucket"
         ]
         Resource = [
-          aws_s3_bucket.secure_bucket.arn,
-          "${aws_s3_bucket.secure_bucket.arn}/*"
+          "arn:aws:s3:::${aws_s3_bucket.mlops_bucket.bucket}",
+          "arn:aws:s3:::${aws_s3_bucket.mlops_bucket.bucket}/*"
         ]
       }
     ]
-    })
+  })
 }

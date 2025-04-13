@@ -17,6 +17,5 @@ provider "aws" {
     role_arn    = var.assume_role
     external_id = var.external_id
   }
-  region = "ap-south-01"
 
 }
