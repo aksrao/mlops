@@ -11,7 +11,7 @@ resource "aws_iam_role" "mlops_role" {
       {
         Effect = "Allow"
         Principal = {
-          Service = "s3.amazonaws.com"
+          AWS = var.user_arn
         }
         Action = "sts:AssumeRole"
       }
