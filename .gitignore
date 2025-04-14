@@ -5,7 +5,7 @@ code.zip
 /Project-1/virEnv/
 /Project-1/*.egg-info
 /Project-1/logs
-/Terraform/*.tfvars
-/Terraform/.terraform/
-/Terraform/*.terraform.*
+**/*.tfvars
+**/.terraform/
+**/*.terraform.*
 **/*.tfstate*
