@@ -21,7 +21,8 @@ dependencies:
   - tk=8.6.13=h5083fa2_1
   - tzdata=2025b=h78e105d_0
   - wheel=0.45.1=pyhd8ed1ab_1
-  - boto3
+  - boto3=1.37.34
+  - botocore=1.37.34
   - numpy
   - pandas
   - pip
