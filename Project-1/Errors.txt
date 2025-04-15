@@ -1,0 +1,8 @@
+Errors while data-ingesting
+
+1. TypeError: Session.create_client() got an unexpected keyword argument 'aws_account_id'
+Sol: make sure that the boto3 and botocaore version are same.
+
+2. botocore.exceptions.ClientError: An error occurred (ExpiredToken) when calling the AssumeRole operation: The security token included in the request is expired
+Sol: cmd "unset AWS_SESSION_TOKEN AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY"
+     cmd "aws sts get-caller-identity"
