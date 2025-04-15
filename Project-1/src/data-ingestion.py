@@ -28,9 +28,9 @@ s3 = boto3.client(
 )
 
 # Setup bucket name, file path in bucket and the local path to store
-bucket_name = "<bucket_name>"
-file_key = "<put file path>"
-local_file_path = "<path to store dataset>"
+bucket_name = "<put bucket name>"
+file_key = "<file path in bucket>"
+local_file_path = "<local path>/artifacts/Hotel_Reservations.csv"
 
 # Fetch the file
 response = s3.download_file(bucket_name, file_key, local_file_path)
