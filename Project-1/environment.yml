@@ -24,6 +24,7 @@ dependencies:
   - boto3=1.37.34
   - botocore=1.37.34
   - numpy
+  - scikit-learn
   - pandas
   - pip
 prefix: /Users/akshayrao/anaconda3/envs/VirEnv
