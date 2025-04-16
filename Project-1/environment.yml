@@ -26,5 +26,7 @@ dependencies:
   - numpy
   - scikit-learn
   - pandas
-  - pip
+  - matplotlib
+  - seaborn
+  - ipympl
 prefix: /Users/akshayrao/anaconda3/envs/VirEnv

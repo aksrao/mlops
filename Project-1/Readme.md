@@ -14,6 +14,7 @@
 ## Conda Commands
 - conda activate VirEnv
 - conda env update -f environment.yml --prune
+- conda install -c <channel_name> <dependencies_name>
 
 ## Env setup and insatll modules
 ![create virtual env](images/create_virtual_env_with_conda.png)
