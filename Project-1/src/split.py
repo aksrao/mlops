@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-file_path= "/Users/akshayrao/dev/mlops/Project-1/artifacts"
+file_path= "<put the full folder path>"
 
 df = pd.read_csv(f"{file_path}/Hotel_Reservations.csv")
 
