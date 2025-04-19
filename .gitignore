@@ -10,3 +10,4 @@ code.zip
 **/*.terraform.*
 **/*.tfstate*
 **/.venv
+**/.env
