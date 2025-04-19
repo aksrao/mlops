@@ -11,3 +11,4 @@ code.zip
 **/*.tfstate*
 **/.venv
 **/.env
+**/__pycache__/
