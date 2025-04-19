@@ -12,7 +12,8 @@
 - this is done so that the unauthorized person cannot acces the data in s3.
 
 ## Conda Commands
-- conda activate VirEnv
+- conda create --name "name" python=3.12
+- conda activate "env name"
 - conda env update -f environment.yml --prune
 - conda install -c <channel_name> <dependencies_name>
 
