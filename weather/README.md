@@ -7,6 +7,8 @@ This server will connect the claude llm to get the real-time forecast of the cit
 - claude desktop
 
 ## To run the server
+- starting setup 
+![initial steup](/weather/initial_setup.png)
 - you can get a Accuweather api here [weather API](https://developer.accuweather.com/)
 - export the "ACCUWEATHER_API_KEY" in the terminal.
 - create .env file and put the api key in it.
