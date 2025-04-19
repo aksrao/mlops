@@ -2,11 +2,13 @@ from typing import Any
 import os
 import httpx
 from mcp.server.fastmcp import FastMCP
+from dotenv import load_dotenv
 
 
 
 mcp = FastMCP("weather")
 
+load_dotenv()
 base_url = "http://dataservice.accuweather.com"
 api_key=os.getenv("ACCUWEATHER_API_KEY")
 
@@ -20,8 +22,8 @@ async def get_location_key(location: str) -> str | None:
     async with httpx.AsyncClient() as client:
         try:
             response = await client.get(location_url, params=params, timeout=30.0)
-            response.raise_for_status()
-            data =  await response.json()
+            data =  response.json()
+            print(data[0]["Key"])
             return data[0]["Key"]
         except Exception:
             return None
@@ -51,15 +53,20 @@ async def get_weather(location: str)-> str:
     forecast = await get_forecast(location_key)
     time = forecast[0]["LocalObservationDateTime"]
     Weathertext = forecast[0]["WeatherText"]
-    rainfall = forecast[0]["HasPrecipitation"]
-    temp = forecast["Temperature"]["Metric"]["Value"] 
-    unit = forecast["Temperature"]["Metric"]["Unit"]
+
+    if forecast[0]["HasPrecipitation"] == "false":
+        rainfall = "There's no rainfall at the moment"
+    rainfall = "There's rainfall at the moment."
+
+    temp_c = forecast[0]["Temperature"]["Metric"]["Value"] 
+    temp_f = forecast[0]["Temperature"]["Imperial"]["Value"]
     return(
+        f"Currently in {location}, it's {Weathertext} with a temperature of {temp_c}°C (about {temp_f}°F). {rainfall} This information is current as of {time}."
         f"The weather forecast of {location}"
         f"Time: {time}\n"
         f"Type of weather: {Weathertext}\n"
         f"Rainfall: {rainfall}\n"
-        f"Temperature: {temp}{unit}"
+        f"Temperature: {temp}\u00b0{unit}"
     )
 
 if __name__ == "__main__":

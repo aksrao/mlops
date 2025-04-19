@@ -8,3 +8,9 @@ This server will connect the claude llm to get the real time forecast of the cit
 
 ## To run the server
 - export the "ACCUWEATHER_API_KEY" in the terminal.
+
+
+## Errors encountered
+1. "Server transport closed unexpectedly, this is likely due to the process exiting early. If you are developing this MCP server you can add output to stderr (i.e. `console.error('...')` in JavaScript, `print('...', file=sys.stderr)` in python) and it will appear in this log.
+2025-04-19T17:46:10.145Z [weather] [error] Server disconnected. For troubleshooting guidance, please visit our [debugging documentation](https://modelcontextprotocol.io/docs/tools/debugging) {"context":"connection"}"
+sol:- create symlink "sudo ln -s $(which uv) /usr/local/bin/uv"
