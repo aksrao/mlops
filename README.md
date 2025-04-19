@@ -5,4 +5,5 @@ there are various projects form biggeners to advance.
     - mlflow
     - kubeflow
     - DVC
+    - MCP server for real time weather gatherer through claude
 - Use Terraform to create S3 bucket so only a role mlops can access the bucket.
