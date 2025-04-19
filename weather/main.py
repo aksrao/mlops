@@ -66,7 +66,7 @@ async def get_weather(location: str)-> str:
         f"Time: {time}\n"
         f"Type of weather: {Weathertext}\n"
         f"Rainfall: {rainfall}\n"
-        f"Temperature: {temp}\u00b0{unit}"
+        f"Temperature: {temp_c}\u00b0C"
     )
 
 if __name__ == "__main__":

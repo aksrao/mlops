@@ -1,5 +1,5 @@
 # This the a weather forecast MCP server.
-This server will connect the claude llm to get the real time forecast of the city metioned.
+This server will connect the claude llm to get the real-time forecast of the city metioned.
 
 ## tools used
 - python3.12
@@ -7,7 +7,27 @@ This server will connect the claude llm to get the real time forecast of the cit
 - claude desktop
 
 ## To run the server
+- you can get a Accuweather api here [weather API](https://developer.accuweather.com/)
 - export the "ACCUWEATHER_API_KEY" in the terminal.
+- create .env file and put the api key in it.
+- add this snippet to claude_desktop_config.json
+```
+{
+    "mcpServers": {
+        "weather": {
+            "command": "uv",
+            "args": [
+                "run", 
+    "--with", 
+    "mcp[cli]", 
+    "mcp", 
+    "run", "/ABSOLUTE/PATH/TO/PARENT/FOLDER/weather/main.py" ]
+        }
+    }
+}
+```
+- make sure to save the files and open/restart the claude desktop
+- ask a city's weather
 
 
 ## Errors encountered
