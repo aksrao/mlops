@@ -29,4 +29,5 @@ dependencies:
   - matplotlib
   - seaborn
   - ipympl
+  - pyyaml
 prefix: /Users/akshayrao/anaconda3/envs/VirEnv
