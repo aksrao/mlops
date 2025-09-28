@@ -12,3 +12,8 @@ code.zip
 **/.venv
 **/.env
 **/__pycache__/
+/RAG/12thclass_RAG/rag
+**/.vscode**
+**/.python-version**
+**/uv.lock**
+**/chroma_db**
