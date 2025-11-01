@@ -17,3 +17,4 @@ code.zip
 **/.python-version**
 **/uv.lock**
 **/chroma_db**
+**/evaluate_rag.py**
