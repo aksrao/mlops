@@ -19,3 +19,5 @@ code.zip
 **/chroma_db**
 **/evaluate_rag.py**
 .vercel
+**/.kfp**
+**/.obsidian/
