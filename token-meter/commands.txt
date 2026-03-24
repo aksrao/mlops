@@ -1,0 +1,12 @@
+python3 -m venv .tokMeter
+source .tokMeter/bin/activate
+python3 -m fastapi dev main.py
+brew tap mongodb/brew
+brew install mongodb-community
+brew services start mongodb/brew/mongodb-community
+mongosh
+brew install grafana
+brew services restart grafana
+brew install prometheus
+nano /opt/homebrew/etc/prometheus.yml
+brew services restart prometheus
