@@ -1,0 +1,33 @@
+{
+  "run_id": "98116fed5e564584b6080a8b506158f5",
+  "dataset_sha256": "16320c9c1ec72448db59aa0a26a0b95401046bef5d02fd3aeb906448e3055e91",
+  "features": [
+    "tenure",
+    "MonthlyCharges",
+    "TotalCharges",
+    "Contract",
+    "InternetService",
+    "OnlineSecurity",
+    "TechSupport",
+    "PaymentMethod"
+  ],
+  "numeric_features": [
+    "tenure",
+    "MonthlyCharges",
+    "TotalCharges"
+  ],
+  "categorical_features": [
+    "Contract",
+    "InternetService",
+    "OnlineSecurity",
+    "TechSupport",
+    "PaymentMethod"
+  ],
+  "metrics": {
+    "accuracy": 0.7331440738112136,
+    "precision": 0.4983277591973244,
+    "recall": 0.7967914438502673,
+    "f1": 0.6131687242798354,
+    "roc_auc": 0.838161667829187
+  }
+}
