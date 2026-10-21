@@ -23,3 +23,4 @@ code.zip
 **/.obsidian/
 **/corpus/
 RAG/legal-RAG/legal_rag_db/4d011621-93bd-4e4d-87d6-55bac9e9b36a/data_level0.bin
+RAG/legal-RAG/legal_rag_db/chroma.sqlite3
