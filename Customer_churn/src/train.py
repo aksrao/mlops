@@ -23,7 +23,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA_PATH = ROOT / "data/raw/telco_customer_churn.csv"
+DATA_PATH = ROOT / "data/experiments/telco_customer_churn_v2.csv"
 ARTIFACT_DIR = ROOT / "artifacts"
 ARTIFACT_DIR.mkdir(exist_ok=True)
 
@@ -91,6 +91,7 @@ model = Pipeline([
 mlflow.set_tracking_uri(f"sqlite:///{ROOT / 'mlflow.db'}")
 mlflow.set_experiment("telco-churn")
 
+
 with mlflow.start_run() as run:
     model.fit(X_train, y_train)
 
@@ -133,5 +134,13 @@ with mlflow.start_run() as run:
     name="model",
     serialization_format="pickle",
 )
+model_uri = f"runs:/{run.info.run_id}/model"
 
-    print(json.dumps(metadata, indent=2))
+registered = mlflow.register_model(
+    model_uri=model_uri,
+    name="TelcoChurnClassifier",
+)
+
+print("Registered model version:", registered.version)
+
+print(json.dumps(metadata, indent=2))
